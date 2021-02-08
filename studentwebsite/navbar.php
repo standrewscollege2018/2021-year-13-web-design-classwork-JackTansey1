@@ -4,7 +4,9 @@ $tutor_sql = "SELECT * FROM tutorgroup";
 $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
 $tutor_aa = mysqli_fetch_assoc($tutor_qry);
  ?>
+ <!--When user clicks 'St Andrews College text they'll be taken to index.php-->
  <a href="index.php"><h1>St Andrew's College</h1></a>
+ <!--Basic Text saying Tutor groups-->
  <h2>Tutor groups</h2>
  <?php
    do {

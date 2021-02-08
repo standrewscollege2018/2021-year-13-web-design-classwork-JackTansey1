@@ -17,7 +17,7 @@ if(!isset($_GET['tutorgroupID'])) {
       $firstname = $tutor_aa['firstname'];
       $lastname = $tutor_aa['lastname'];
       $photo = $tutor_aa['photo'];
-      
+
       echo "<img src='images/$photo' class=''>";
       echo "<p>$firstname $lastname</p>";
 
