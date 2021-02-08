@@ -1,0 +1,13 @@
+/*background colour*/
+.bg-darkblue{
+  background-color: #124456;
+}
+
+
+/*Media query to change font size*/
+@media screen and (max-width:768px) {
+  .display-1  {
+    font-size: 60px;
+  }
+
+}
