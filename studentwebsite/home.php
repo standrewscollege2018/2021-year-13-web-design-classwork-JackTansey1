@@ -1,2 +1,2 @@
 <!--A Basic Welcome Message-->
-<p>Welcome to St Andrew's College!</p>
+<h1>Welcome to St Andrew's College!</h1>

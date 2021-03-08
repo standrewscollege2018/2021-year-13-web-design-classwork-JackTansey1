@@ -11,6 +11,9 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <div class=" align-center col-lg-12 col-md-12 rounded p-2 mt-1 text-center ">
+      <h1>Delete Student</h1>
+    </div>
   <div class="row">
     <?php
       $studentID = $_GET['studentID'];
