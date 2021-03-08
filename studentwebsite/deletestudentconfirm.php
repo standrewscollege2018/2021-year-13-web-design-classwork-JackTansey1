@@ -11,42 +11,36 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <div class="row">
-      <?php
-        if(!isset($_POST['search'])) {
-          header("Location: search.php");
-        }
-        $search = $_POST['search'];
+  <div class="row">
+    <?php
+      $studentID = $_GET['studentID'];
+      $student_sql = "SELECT * FROM student WHERE studentID=$studentID";
+      $student_qry = mysqli_query($dbconnect, $student_sql);
+      $student_aa=mysqli_fetch_assoc($student_qry);
+        do {
+          $firstname = $student_aa['firstname'];
+          $lastname = $student_aa['lastname'];
+          $photo = $student_aa['photo'];
+        ?>
 
-        $result_sql = "SELECT * FROM student WHERE firstname LIKE '%$search%' OR lastname LIKE '%$search%'";
-
-        $result_qry = mysqli_query($dbconnect, $result_sql);
-
-        if(mysqli_num_rows($result_qry)==0) {
-            echo "<h1>No results found</h1>";
-          } else {
-            $result_aa = mysqli_fetch_assoc($result_qry);
-
-            do {
-              $firstname = $result_aa['firstname'];
-              $lastname = $result_aa['lastname'];
-              $photo = $result_aa['photo'];
-              ?>
-
-              <div class="col-lg-3 col-md-6 img-thumbnail rounded">
-                <img src="images/<?php echo $photo; ?>" class="img-fluid" alt="">
-                <p><?php echo "$firstname $lastname"; ?></p>
-              </div>
-            <?php
-              } while ($result_aa = mysqli_fetch_assoc($result_qry));
+        <div class="col-lg-3 col-md-6 img-thumbnail rounded">
+          <?php
+          echo "<img src='images/$photo' class='img-fluid'>";
+          echo "<p>$firstname $lastname</p>";
+          ?>
+          </div>
+          <?php
+            } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry));
 
 
-        }
+          ?>
 
-       ?>
+
 
     </div>
-
+    <p>Are you sure you want to remove this Person? </p>
+    <a href="index.php?page=deletestudent&studentID=<?php echo $studentID; ?>&photo=<?php echo $photo; ?>">Yep</a>
+    <a href="index.php">Nevermind, Back To Home Page</a>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
