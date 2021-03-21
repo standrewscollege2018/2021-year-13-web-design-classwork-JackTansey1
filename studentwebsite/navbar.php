@@ -19,17 +19,26 @@
   <div class="collapse navbar-collapse text-light" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="index.php?page=addtutor">Add TutorGroup</a>
+        <a class="nav-link" href="index.php?page=login">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.php?page=deletestudentselect">Delete Student</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="index.php?page=updatestudentselect">Update Student</a>
-      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Tutor groups
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <?php
+          $tutor_sql="SELECT * FROM tutorgroup";
+          $tutor_qry=mysqli_query($dbconnect, $tutor_sql);
+          $tutor_aa=mysqli_fetch_assoc($tutor_qry);
 
-      <li class="nav-item">
+          do {
+            $tutorgroupID = $tutor_aa['tutorgroupID'];
+            $tutorcode = $tutor_aa['tutorcode'];
 
+            echo "<a class='dropdown-item' href='index.php?page=tutorgroup&tutorgroupID=$tutorgroupID&tutorcode=$tutorcode'>$tutorcode</a>";
+
+           } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry))
+        ?>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="index.php?page=searchresults" method="post">
